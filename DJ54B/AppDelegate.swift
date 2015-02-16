@@ -78,10 +78,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func run(command: String) {
         busy = true
+
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            if let info = self.fetch("http://lorne.withassociates.com:9292/\(command)") {
+            let maybeInfo = self.fetch("http://lorne.withassociates.com:9292/\(command)")
+
+            self.busy = false
+
+            if let info = maybeInfo {
                 self.info = info
-                self.busy = false
                 self.updateUI()
             }
         }

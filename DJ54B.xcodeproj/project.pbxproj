@@ -323,6 +323,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DJ54B/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -334,6 +335,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DJ54B/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -393,6 +395,7 @@
 				7DA5B3361A8FC74500DD8714 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7DA5B3371A8FC74500DD8714 /* Build configuration list for PBXNativeTarget "DJ54BTests" */ = {
 			isa = XCConfigurationList;
@@ -401,6 +404,7 @@
 				7DA5B3391A8FC74500DD8714 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
