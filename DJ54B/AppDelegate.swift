@@ -11,6 +11,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    let notificationCenter: NSNotificationCenter = NSWorkspace.sharedWorkspace().notificationCenter
     let statusItem: NSStatusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
 
     @IBOutlet weak var menu: NSMenu!
@@ -36,7 +37,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.menu = menu
 
         refresh()
+        startTimer()
+        registerForNotifications()
+    }
 
+    func refresh() {
+        if !busy {
+            run("info")
+        }
+    }
+
+    func startTimer() {
         timer = NSTimer.scheduledTimerWithTimeInterval(
             5,
             target: self,
@@ -46,10 +57,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
     }
 
-    func refresh() {
-        if !busy {
-            run("info")
-        }
+    func registerForNotifications() {
+        notificationCenter.addObserver(
+            self,
+            selector: Selector("sleep"),
+            name: NSWorkspaceWillSleepNotification,
+            object: nil
+        )
+
+        notificationCenter.addObserver(
+            self,
+            selector: Selector("wake"),
+            name: NSWorkspaceDidWakeNotification,
+            object: nil
+        )
     }
 
     @IBAction func playOrPause(sender: AnyObject) {
@@ -74,6 +95,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBAction func quit(sender: AnyObject) {
         NSApplication.sharedApplication().terminate(nil)
+    }
+
+    func sleep() {
+        timer?.invalidate()
+        timer = nil
+    }
+
+    func wake() {
+        startTimer()
     }
 
     private func run(command: String) {
