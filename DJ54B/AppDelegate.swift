@@ -22,6 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var info:NSDictionary?
     var track: NSDictionary? { return info?["track"] as? NSDictionary }
+    var songID: String? { return track?["id"] as? String }
     var songLabel: String? { return track?["name"] as? String }
     var artistLabel: String? { return track?["artist"] as? String }
     var volumeLabel: Int? { return info?["volume"] as? Int }
@@ -95,6 +96,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBAction func quit(sender: AnyObject) {
         NSApplication.sharedApplication().terminate(nil)
+    }
+
+    @IBAction func openInSpotify(sender: AnyObject) {
+        if let songID = self.songID {
+            if let url = NSURL(string: songID) {
+                NSWorkspace.sharedWorkspace().openURL(url)
+            }
+        }
     }
 
     func sleep() {

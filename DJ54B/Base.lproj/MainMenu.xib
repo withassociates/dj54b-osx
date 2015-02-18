@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
@@ -30,6 +31,13 @@
                 </menuItem>
                 <menuItem enabled="NO" id="5bG-H7-GbS">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="Va3-aa-NbN"/>
+                <menuItem title="Show in Spotify" id="gMe-sS-Xsg">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="openInSpotify:" target="Voe-Tx-rLC" id="lBZ-Ql-iWQ"/>
+                    </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="TiF-JS-FcX"/>
                 <menuItem title="Play" id="raj-8z-iTe">
